@@ -316,7 +316,9 @@ while True:
         while True:
             sys.stderr.write("\x1b[2J\x1b[H")
             moves = choices(sample(blocks, 1)[0], bits=board)  # TODO rename bits to board
-            board = fall(board, sample(moves, 1)[0])  # NOTE scan
+            board = flushed(
+                fall(board, sample(moves, 1)[0])  # NOTE scan
+            )
             print(render_bits(board))
             sleep(0.03)
     except KeyboardInterrupt as ki:
